@@ -11,7 +11,7 @@ Através da implementação de um pipeline gráfico, iremos compreender melhor c
 
 O pipeline gráfico consiste exatamente de uma sequência de passos necessários para transformar uma descrição geométrica/matemática de uma cena 3D em uma descrição visual na tela 2D. A imagem final é obtida por meio da rasterização das primitivas projetadas na tela. Basicamente, cada passo do pipeline gráfico consiste de uma transformação geométrica de um sistema de coordenadas (espaço) para outro, são eles :
 
-((IMAGEM DOS ESTAGIOS DO PIPELINE))
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/pipeline.png)
 
 ## 1. Transformação: Espaço do Objeto → Espaço do Universo
 
@@ -22,7 +22,8 @@ de modelagem é composta por uma sequência de transformações geométricas que
 posicionam o modelo no universo. As transformações que podem compor a matriz de
 modelagem são a rotação, translação, escala e o cisalhamento (shear).
 
-((space_object_to_world_space))
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/space_object_to_world_space.png)
+
 
 ## Rotação
 
@@ -32,75 +33,80 @@ Mas também podemos fazer isto para todos os eixos, misturando as rotações, ro
 
 Para calcular as novas posições dos vertices, também podemos escrever o valor de x de um vértice, pela distância dele até a origem multiplicada pelo cosseno do ângulo formado entre o vetor e o eixo X. O mesmo ocorre com o y de um vértice, que pode ser escrito pela distância multiplicada pelo seno do ângulo.
 
-((rotacao))
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacao.png )
 
 Agora iremos rotacionar os vértices que desejamos:
 
-((rotacao2))
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacao2.png )
 
 Os calculos são os seguintes:
 
-((rotacao3))
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacao3.png )
+
 
 E por fim teremos os resultados:
 
-((rotacao4))
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacao4.png )
+
 
 No codigo faremos o seguinte para a rotação em X:
 
-((rotacaox_codigo))
+
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacao_x_codigo.png )
 
 E obteremos:
 
-((rotacaox))
+
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacaox.png)
+
 
 Em Y segue os mesmos passos:
 
-(rotacaoY_codigo)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacao_y_codigo.png)
 E obteremos:
 
-(rotacaoy)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacaoy.png)
 Para rotacionar em ambos, primeiro rotacionamos no eixo X e dps no eixo Y assim:
 
-(rotacaoXY_codigo)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacaoxy_codigo.png )
 E obteremos:
 
-(rotacao_xy)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacaoXY.png)
 ## Escala
 
 Escalonar significa redimensionar um objeto, ou seja, aumentar ou diminuir suas dimensões, deformá-lo ou até mesmo espelhá-lo.  Para fazer isso, basta multiplicar os valores das coordenadas de um vértice por um fator de escala - lembrando que as coordenadas de um vértice possuem valores inteiros para X, Y e Z no modelo 3D e para X e Y no modelo 2D. Essa operação de multiplicação deve ser feita para todos os vértices do objeto. Ao longo da postagem, vamos adotar a seguinte notação : vetor transformado = matriz de transformação x vetor original. Cada vetor é uma generalização para os vértices do objeto. 
 
 Matriz de escala:
 
-(matriz_escala_codigo)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/matriz_escala_codigo.png)
 Aplicando a escala no eixo Y, aumentando 3 vezes:
 
-(imagem escala y)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/scala_y.png )
 
 ## Cisalhamento (Shear)
 
 Uma outra forma de deformar os objetos de uma cena seria aplicando esta transformação. O shear  mantém uma coordenada U fixa enquanto muda a coordenada V ao longo de seu eixo, ou seja, há uma relação linear entre V e U.
 
-(shear)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/shear.png )
 Matriz de Cisalhamento:
 
-(shear_codigo)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/shear_matriz.png )
 Aplicando cisalhamento no eixo X:
 
-(shear_x)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/shear_x.png)
 # 2. Transformação: Espaço do Universo → Espaço da Câmera
 
-(espaco_camera)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/espaco_camera.png)
 Aqui é definido como a cena será vista, então, faz-se necessário configurar a câmera. A câmera possui 3 dados importantes que devem ser descritos:
 
 - Posição da Câmera: Local onde ela se encontra
@@ -109,38 +115,37 @@ Aqui é definido como a cena será vista, então, faz-se necessário configurar 
 
 Assim, é criado o código que representa a Criação da Câmera:
 
-(codigo_camera)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/codigo_camera.png )
 Abaixo, é feito a parte que corresponde a essa etapa, o vertice, que agora possui os dados da etapa anterior, é multiplicado com a matriz view, criada para ser usada nessa etapa:
 
-(codigo_matriz)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/codigo_mult%20matrix.png)
 Inicialização da camera:
 
-(codigo camera inicializacao)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/criacao_da_camera_codigo.png )
 # 3. Transformação: Espaço da Câmera → Espaço Projetivo ou de Recorte
 
 Até agora já percorremos metade do pipeline gráfico. Esta terceira etapa consiste em transformar vértices do espaço da câmera para o espaço de recorte (ou projetivo) e mais uma vez iremos construir uma matriz, a matriz de projeção (projection matrix). Dada a seguinte situação :
 
-(espaco_de_corte)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/espaco_de_corte.png)
 É interessante ressaltar que é nessa etapa onde ocorre a distorção perspectiva - objetos mais próximos do view plane aparentam ser maiores do que objetos que estão mais distantes.
 
 Assim, é criado o código que representa a Matriz de Projeção:
 
 Criação do View Plane - Matriz Projection:
 
-(corte_codigo)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/corte_codigo.png )
 Com a matriz de projeção criada, multiplica-se agora com resultado da etapa anterior, da seguinte forma:
 
-(projecao_vertice_codigo.png)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/projecao_vertice_codigo.png )
 # 4. Transformação: Espaço de Recorte → Espaço “Canônico”
 
-(recorte-canonico)
-
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/recorte-canonico.png)
 Esta etapa do pipeline é responsável por transformar pontos do espaço de recorte para o
 espaço canônico (ou NDC – Normalized Device Coordinates). Isto é feito em duas
 etapas. Primeiro, dividem-se as coordenadas dos vértices no espaço de recorte pela sua
@@ -155,14 +160,14 @@ centrado na origem.
 
 Aqui ocorre a homogeneização, que no caso, significa dividir todos os componentes do vértice pela sua coordenada homogênea. Então, para fazer a divisão, fazemos o seguinte:
 
-(canonico_codigo)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/canonico_codigo.png )
 Como pode notar no código, é pego o último elemento, que é a coordenada homogênea, e assim, dividimos pelo resultado da etapa anterior, terminando essa etapa.
 
 # 5. Transformação: Espaço “Canônico” → Espaço de Tela
 
-(canonico)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/canonico.png)
 Esta etapa do pipeline é responsável por transformar pontos do espaço canônico para o
 espaço de tela. Isto é feito através da multiplicação dos vértices por uma matriz
 específica que envolve escalas e translações.
@@ -175,29 +180,30 @@ Então, eis o código que representa a Matriz Viewport:
 Criação da Tela - Matriz Viewport
 
 
-(viewportcodigo.png)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/viewportcodigo.png)
 Com a viewport criada, ocorre a multiplicação da etapa anterior com a viewport:
 
-(viewport_pipeline.png)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/viewport_pipeline.png)
 # Criação do Pipeline Gráfico
 
 
 Esta parte consiste em mostrar como foi juntar os trechos anteriores em apenas uma função, comentando qual etapa corresponde a qual linha do código. Para isso, veja o código a seguir:
 
-(pipeline_codigo.png)
 
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/pipeline_codigo.png)
 # Resultados
 
 Aqui poderemos comparar o resultado obtido com o resultado do loader disponibilizado pelo professor.
 
 Loader do professor:
-(imagem_macaco_gl)
+
+![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/loader_professor.png)
 
 Pipeline gerado:
-(imagem_macaco_mygl)
 
+![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/mygl.png )
 
 
 
