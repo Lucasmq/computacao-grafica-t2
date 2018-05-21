@@ -66,6 +66,8 @@ Em Y segue os mesmos passos:
 
 
 ![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/rotacao_y_codigo.png)
+
+
 E obteremos:
 
 
@@ -238,10 +240,16 @@ Loader do professor:
 
 ![alt text]( https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/loader_professor.png)
 
-Pipeline gerado:
+Gerado pelo Pipeline:
 
 ![alt text](https://github.com/Lucasmq/computacao-grafica-t2/blob/master/imagens/mygl.png )
 
+# Conclusão
 
+Com a implementação do pipeline podemos colocar em prática os conhecimentos obtidos na disciplina e entender melhor o funcionamento.
+
+# Referências
+
+- Notas de Aula do Professor Christian A. P.
 
 
