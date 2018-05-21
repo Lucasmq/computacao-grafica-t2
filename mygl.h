@@ -21,7 +21,7 @@ typedef struct vertices
 	int y;
 }VERTICES;
 
-//Pixel scructure
+//Pixel 
 struct Pixel
 {
     int pos_x;
